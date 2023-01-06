@@ -93,11 +93,11 @@
     (= :norelease (bump-version-scheme context related-data))
     "Skipping release, no version bump found."
 
-    (str/includes? (github/commit-title (:commit related-data)) "[norelease]")
-    "Skipping release. Reason: git commit title contains [norelease]"
+    (str/includes? (github/commit-title (:commit related-data)) "[no-release]")
+    "Skipping release. Reason: git commit title contains [no-release]"
 
-    (contains? (get-labels (get-in related-data [:related-prs])) "norelease")
-    "Skipping release. Reason: related PR has label norelease"))
+    (contains? (get-labels (get-in related-data [:related-prs])) "no-release")
+    "Skipping release. Reason: related PR has label no-release"))
 
 (defn generate-new-release-data [context related-data]
   (let [bump-version-scheme (bump-version-scheme context related-data)
